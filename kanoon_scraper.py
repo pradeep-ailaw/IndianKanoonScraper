@@ -14,10 +14,12 @@ import time
 CHROME_DRIVER_PATH = "XX/XX/XX/chromedriver-win64/chromedriver-win64/chromedriver.exe" #link to chromedriver exe here
 URL = 'https://indiankanoon.org/browse/greentribunal/{}/'
 BASE_URL = "https://indiankanoon.org" 
+DOWNLOAD_DIR = f"{os.getcwd()}\\green-tribunal-2022\\" # set download file location
 
 # Enter username and password here if downloading court copies
 USERNAME = "xyz@gmail.com"
 PASSWORD = "abc123"
+
 
 driver = webdriver.Chrome(CHROME_DRIVER_PATH)
 
@@ -75,10 +77,9 @@ def login(driver, username, password):
     
 
 chromedriver_autoinstaller.install()
-downloadDir = f"{os.getcwd()}\\green-tribunal-2022\\" # set download file location
-Path(downloadDir).mkdir(parents=True, exist_ok=True)
+Path(DOWNLOAD_DIR).mkdir(parents=True, exist_ok=True)
 
-preferences = {"download.default_directory": downloadDir,
+preferences = {"download.default_directory": DOWNLOAD_DIR,
                 # "download.prompt_for_download": False,
                 # "directory_upgrade": True,
                 # "safebrowsing.enabled": True
